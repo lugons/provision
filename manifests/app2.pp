@@ -13,8 +13,8 @@ nginx::resource::upstream { 'redmine_thin_app':
 }
 
 nginx::resource::vhost { 'redmine.lugons.home':
-    ensure  => present,
-    proxy   => 'http://redmine_thin_app',
+  ensure => present,
+  proxy  => 'http://redmine_thin_app',
 }
 
 package { [
@@ -22,22 +22,24 @@ package { [
             'libmagickwand-dev',
             'ruby-dev',
           ]:
-    ensure => present;
+  ensure => present;
 }
 
 package { 'bundle' :
-    ensure   => present,
-    provider => 'gem';
+  ensure   => present,
+  provider => 'gem';
 }
 
 file { '/var/www/':
-  ensure => 'directory';
-}->
+  ensure => directory;
+}
+
 file { '/var/www/lugons.org/' :
-  ensure => 'directory';
-}->
+  ensure => directory;
+}
+
 file { '/var/www/lugons.org/redmine/current/' :
-  ensure => 'directory',
+  ensure => directory,
   owner  => 'vagrant',
   group  => 'vagrant',
 }
@@ -48,6 +50,6 @@ class { 'thin::site':
 }
 
 class { 'gitolite':
-  path            => '/home/git',
-  admin_pub_key   => hiera('gitolite_admin_pub_key'),
+  path          => '/home/git',
+  admin_pub_key => hiera('gitolite_admin_pub_key'),
 }

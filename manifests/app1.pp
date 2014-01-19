@@ -1,21 +1,21 @@
 import 'base'
 
 package { 'python-pip':
-    ensure => installed,
+  ensure => installed,
 }
 
 package { 'python-dev':
-    ensure => installed,
+  ensure => installed,
 }
 
 package { 'build-essential':
-    ensure => installed,
+  ensure => installed,
 }
 
 package { 'mezzanine':
-    ensure    => installed,
-    provider  => pip,
-    subscribe => Package['python-pip', 'python-dev', 'build-essential'],
+  ensure    => installed,
+  provider  => pip,
+  subscribe => Package['python-pip', 'python-dev', 'build-essential'],
 }
 
 class { 'nginx': }
