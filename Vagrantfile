@@ -2,7 +2,7 @@ Vagrant::Config.run do |config|
   {
     :db1 => {
       :box     => 'lugons',
-      :box_url => 'ftp://lugons.org/vagrant/lugons-debian-7.2-x86_64.box',
+      :box_url => 'ftp://ftp.lugons.org/vagrant/lugons-debian-7.2-x86_64.box',
       :addr    => '192.168.123.11',
     },
     :app1 => {
