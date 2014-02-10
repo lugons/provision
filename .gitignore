@@ -1,5 +1,2 @@
-.tmp/
-modules/
-.librarian/
 .vagrant/
-Puppetfile.lock
+vagrant_ansible_inventory_*
