@@ -23,6 +23,7 @@ Vagrant::Config.run do |config|
       local.vm.host_name = ENV['VAGRANT_HOSTNAME'] || name.to_s.downcase.gsub(/_/, '-').concat(".lugons.org")
       local.vm.provision :ansible do |ansible|
         ansible.playbook = "provisioning/playbook.yml"
+        ansible.host_key_checking = false
       end
     end
   end
