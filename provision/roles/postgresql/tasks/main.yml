@@ -3,3 +3,5 @@
   sudo: yes
   notify:
     - restart postgresql
+
+- include: meka.yml

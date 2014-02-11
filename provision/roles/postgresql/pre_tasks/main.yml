@@ -5,3 +5,7 @@
 - name: add postgresql repository
   apt_repository: repo='deb http://apt.postgresql.org/pub/repos/apt/ wheezy-pgdg main' state=present
   sudo: yes
+
+- name: add python-psycopg2 package
+  apt: name=python-psycopg2 state=latest
+  sudo: yes
