@@ -1,0 +1,8 @@
+- name: add nginx apt key
+  apt_key: id=C300EE8C state=present
+
+- name: install nginx
+  apt: pkg=nginx state=latest
+  sudo: yes
+  notify:
+    - restart nginx
