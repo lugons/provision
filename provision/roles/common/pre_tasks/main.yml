@@ -1,0 +1,3 @@
+- name: install pycurl
+  apt: pkg=python-pycurl state=latest
+  sudo: yes

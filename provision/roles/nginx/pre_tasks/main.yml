@@ -1,0 +1,7 @@
+- name: add nginx apt-key
+  apt_key: data="{{ lookup('file', 'nginx.gpg') }}" state=present
+  sudo: yes
+
+- name: add nginx repository
+  apt_repository: repo='deb http://nginx.org/packages/debian/ wheezy nginx' state=present
+  sudo: yes
