@@ -1,3 +1,4 @@
 - hosts: db
   roles:
     - common
+    - postgresql
