@@ -1,6 +1,6 @@
 [db]
-db1 ansible_ssh_host=192.168.123.11
+db1.lugons.org ansible_ssh_host=192.168.123.11
 
 [app]
-app1 ansible_ssh_host=192.168.123.21
-app2 ansible_ssh_host=192.168.123.22
+app1.lugons.org ansible_ssh_host=192.168.123.21
+app2.lugons.org ansible_ssh_host=192.168.123.22
