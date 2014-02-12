@@ -23,3 +23,10 @@
 - name: create nginx sites-enabled
   file: name=/etc/nginx/sites-enabled state=directory
   sudo: yes
+
+- name: create nginx config
+  template: src=host.j2 dest=/etc/nginx/sites-available/{{ item.vhost }}
+  with_items: vhosts
+  sudo: yes
+  notify:
+    - restart nginx

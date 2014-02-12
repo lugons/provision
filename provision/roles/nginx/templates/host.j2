@@ -1,21 +1,21 @@
-upstream {{ user }}_lugons_org {
-  server unix:/run/gunicorn/{{ user }}.lugons.org.sock fail_timeout=10s;
+upstream {{ item.upstream }} {
+  server unix:/run/gunicorn/{{ item.vhost }}.sock fail_timeout=10s;
 }
 
 server {
   listen                *:80;
-  server_name           {{ user }}.lugons.org;
+  server_name           {{ item.vhost }};
 
-  access_log            /var/log/nginx/{{ user }}.lugons.org.access.log;
-  error_log             /var/log/nginx/{{ user }}.lugons.org.error.log;
+  access_log            /var/log/nginx/{{ item.vhost }}.access.log;
+  error_log             /var/log/nginx/{{ item.vhost }}.error.log;
 
   location / {
-    proxy_pass          http://{{ user }}_lugons_org;
+    proxy_pass          http://{{ item.upstream }};
     proxy_read_timeout  90;
   }
 
   location /static {
-    alias      /home/{{ user }}/vhosts/mezzanine/static;
+    alias      /home/{{ item.user }}/vhosts/mezzanine/static;
   }
 
 }
