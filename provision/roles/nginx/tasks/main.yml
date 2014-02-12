@@ -3,3 +3,23 @@
   sudo: yes
   notify:
     - restart nginx
+
+- name: configure nginx
+  copy: src=nginx.conf dest=/etc/nginx/nginx.conf
+  sudo: yes
+  notify:
+    - restart nginx
+
+- name: configure nginx proxy
+  copy: src=proxy.conf dest=/etc/nginx/conf.d/proxy.conf
+  sudo: yes
+  notify:
+    - restart nginx
+
+- name: create nginx sites-available
+  file: name=/etc/nginx/sites-available state=directory
+  sudo: yes
+
+- name: create nginx sites-enabled
+  file: name=/etc/nginx/sites-enabled state=directory
+  sudo: yes
