@@ -6,17 +6,16 @@ hosts = {
 
 Vagrant.configure("2") do |config|
   hosts.each do |name, ip|
-    config.vm.define name do |machine|
+    config.vm.define "%s.lugons.org" % name do |machine|
       machine.vm.box = "lugons"
       machine.vm.box_url = "ftp://ftp.lugons.org/vagrant/debian-7.4.0-x86_64.box"
-      machine.vm.host_name = "%s.lugons.org" % name
+      machine.vm.hostname = name
       machine.vm.network :private_network, ip: ip
       machine.vm.provision :ansible do |ansible|
-        ansible.playbook = "provision/%s.yml" % name[0..-2]
+        ansible.playbook = "provision/site.yml"
+        ansible.inventory_path = "provision/vm"
+        ansible.raw_arguments = ['--limit=%s.lugons.org' % name]
         ansible.host_key_checking = false
-        ansible.groups = {
-          name[0..-2] => [name]
-        }
       end
     end
   end
