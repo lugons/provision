@@ -4,4 +4,5 @@
     - include: roles/nginx/pre_tasks/main.yml
   roles:
     - common
+    - users
     - nginx

@@ -1,4 +1,9 @@
 vhosts:
-  - vhost: meka.lugons.org
-    upstream: meka_lugons_org
-    user: meka
+  - vhost: "meka.lugons.org"
+    upstream: "meka_lugons_org"
+    user: "meka"
+
+users:
+  - user: "meka"
+    password: "{{ meka_password }}"
+    groups: "sudo"
