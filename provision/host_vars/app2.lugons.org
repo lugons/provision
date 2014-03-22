@@ -1,9 +1,0 @@
-vhosts:
-  - vhost: "atlantic777.lugons.org"
-    upstream: "atlantic777_lugons_org"
-    user: "atlantic777"
-
-users:
-  - user: "atlantic777"
-    password: "{{ atlantic777_password }}"
-    groups: "sudo"

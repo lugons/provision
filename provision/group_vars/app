@@ -1,0 +1,4 @@
+vhosts:
+  - vhost: "meka.vm.lugons.org"
+    upstream: "meka_lugons_org"
+    user: "meka"

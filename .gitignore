@@ -1,3 +1,2 @@
 .vagrant/
-group_vars/
 vagrant_ansible_inventory_*
