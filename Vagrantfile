@@ -18,8 +18,8 @@ Vagrant.configure("2") do |config|
                 ansible.playbook = "provision/site.yml"
                 ansible.host_key_checking = false
                 ansible.groups = {
-                    name[0..-2] => ["%s.vm.lugons.org" % name],
                     "vm" => ["%s.vm.lugons.org" % name],
+                    name => ["%s.vm.lugons.org" % name],
                 }
             end
         end

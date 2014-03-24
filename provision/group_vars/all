@@ -2,3 +2,7 @@ users:
   - user: "meka"
     password: "{{ meka_password }}"
     groups: "sudo"
+
+  - user: "atlantic777"
+    password: "{{ meka_pasword }}"
+    groups: "sudo"

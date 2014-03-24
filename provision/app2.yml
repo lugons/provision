@@ -1,0 +1,8 @@
+- hosts: app2
+  pre_tasks:
+    - include: roles/common/pre_tasks/main.yml
+    - include: roles/nginx/pre_tasks/main.yml
+  roles:
+    - common
+    - users
+    - nginx
