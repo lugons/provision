@@ -1,10 +1,17 @@
 - name: add user
-  user: name={{ item.user }} password={{ item.password }} update_password=always groups={{ item.groups }} state=present
   sudo: yes
+  user:
+    name: "{{ item.user }}"
+    password: "{{ item.password }}"
+    update_password: always
+    groups: "{{ item.groups }}"
+    state: present
   with_items: users
 
 - name: add vhosts dir for user
-  file: path=/home/{{ item.user }}/vhosts state=directory
   sudo: yes
   sudo_user: "{{ item.user }}"
+  file:
+    path: "/home/{{ item.user }}/vhosts"
+    state: directory
   with_items: users

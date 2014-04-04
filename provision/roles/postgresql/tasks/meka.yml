@@ -1,9 +1,15 @@
 - name: add PostgreSQL user meka
-  postgresql_user: name=meka password={{ meka_postgresql_password }}
   sudo: yes
   sudo_user: postgres
+  postgresql_user:
+    name: meka
+    password: "{{ meka_postgresql_password }}"
 
 - name: add PostgreSQL DB meka_mezzanine
-  postgresql_db: name=meka_mezzanine owner=meka encoding=UTF-8 template=template0
   sudo: yes
   sudo_user: postgres
+  postgresql_db:
+    name: meka_mezzanine
+    owner: meka
+    encoding: UTF-8
+    template: template0

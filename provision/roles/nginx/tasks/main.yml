@@ -1,32 +1,44 @@
 - name: install nginx
-  apt: pkg=nginx state=latest
   sudo: yes
+  apt:
+    pkg: nginx
+    state: latest
   notify:
     - restart nginx
 
 - name: configure nginx
-  copy: src=nginx.conf dest=/etc/nginx/nginx.conf
   sudo: yes
+  copy:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
   notify:
     - restart nginx
 
 - name: configure nginx proxy
-  copy: src=proxy.conf dest=/etc/nginx/conf.d/proxy.conf
   sudo: yes
+  copy:
+    src: proxy.conf
+    dest: /etc/nginx/conf.d/proxy.conf
   notify:
     - restart nginx
 
 - name: create nginx sites-available
-  file: name=/etc/nginx/sites-available state=directory
   sudo: yes
+  file:
+    name: /etc/nginx/sites-available
+    state: directory
 
 - name: create nginx sites-enabled
-  file: name=/etc/nginx/sites-enabled state=directory
   sudo: yes
+  file:
+    name: /etc/nginx/sites-enabled
+    state: directory
 
 - name: create nginx config
-  template: src=host.j2 dest=/etc/nginx/sites-available/{{ item.vhost }}
-  with_items: vhosts
   sudo: yes
+  template:
+    src: host.j2
+    dest: "/etc/nginx/sites-available/{{ item.vhost }}"
+  with_items: vhosts
   notify:
     - restart nginx

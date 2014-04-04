@@ -1,9 +1,12 @@
 - name: update apt
-  apt: update_cache=yes
   sudo: yes
+  apt:
+    update_cache: yes
 
 - name: install openntpd
-  apt: pkg=openntpd state=latest
   sudo: yes
+  apt:
+    pkg: openntpd
+    state: latest
   notify:
     - restart openntpd

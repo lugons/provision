@@ -1,7 +1,10 @@
 - name: update apt
-  apt: update_cache=yes
   sudo: yes
+  apt:
+    update_cache: yes
 
 - name: install pycurl
-  apt: pkg=python-pycurl state=latest
   sudo: yes
+  apt:
+    pkg: python-pycurl
+    state: latest

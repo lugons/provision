@@ -1,6 +1,8 @@
 - name: install postgresql
-  apt: pkg=postgresql state=latest
   sudo: yes
+  apt:
+    pkg: postgresql
+    state: latest
   notify:
     - restart postgresql
 
