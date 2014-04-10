@@ -1,4 +1,0 @@
-vhosts:
-  - vhost: "atlantic777.vm.lugons.org"
-    upstream: "atlantic777_lugons_org"
-    user: "atlantic777"

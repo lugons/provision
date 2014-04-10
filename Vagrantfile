@@ -4,7 +4,6 @@
 hosts = {
   "db1"  => "192.168.123.11",
   "app1" => "192.168.123.21",
-  "app2" => "192.168.123.22"
 }
 
 Vagrant.configure("2") do |config|
@@ -19,7 +18,7 @@ Vagrant.configure("2") do |config|
                 ansible.host_key_checking = false
                 ansible.groups = {
                     "vm" => ["%s.vm.lugons.org" % name],
-                    name => ["%s.vm.lugons.org" % name],
+                    name[0..-2] => ["%s.vm.lugons.org" % name],
                 }
             end
         end
